@@ -37,6 +37,5 @@ A plataforma gera logs interoperáveis (JSON/CSV) para monitoramento de KPIs pel
 * Alcance territorial via geolocalização do acesso.
 
 ---
-**Desenvolvido por:** Joelma Godoy
----
-**Instituição:** Secretaria Estadual de Saúde de Mato Grosso (SES/MT) / CRIDAC
+**Desenvolvido por:** Joelma Silva Campos Godoy  
+**Instituição:** Secretaria Estadual de Saúde de Mato Grosso (SES/MT) \ CRIDAC
