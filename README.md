@@ -1,4 +1,3 @@
-# TeleCRIDAC
 # TeleCRIDAC - Plataforma de Teleatendimento Multidisciplinar CRIDAC/SES-MT
 
 ## 📋 Visão Geral
