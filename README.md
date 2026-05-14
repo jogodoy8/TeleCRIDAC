@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="logo-telecridac.png" alt="TeleCRIDAC Logo" width="100%">
+  <img src="logo-telecridac.png" alt="Logotipo TeleCRIDAC" width="100%">
 </p>
-
-# TeleCRIDAC - Plataforma de Teleatendimento Multidisciplinar
 # TeleCRIDAC - Plataforma de Teleatendimento Multidisciplinar CRIDAC/SES-MT
 
 ## 📋 Visão Geral
