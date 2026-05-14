@@ -38,4 +38,5 @@ A plataforma gera logs interoperáveis (JSON/CSV) para monitoramento de KPIs pel
 
 ---
 **Desenvolvido por:** Joelma Godoy
+---
 **Instituição:** Secretaria Estadual de Saúde de Mato Grosso (SES/MT) / CRIDAC
