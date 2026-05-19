@@ -337,4 +337,168 @@
                         <td><strong>Laudo de Funcionalidade (IFBrM)</strong></td>
                         <td>Registro Criptografado</td>
                         <td>Prontuário e Looker Studio</td>
-                        <td>Geolocalização das demandas
+                        <td>Geolocalização das demandas e mapeamento estatístico de barreiras estaduais.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Inteligência de Dados (CGA)</span>
+        <span>Slide 7</span>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">🛠️ Pilares Tecnológicos (Foco em Gratuidade e Robustez)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-brands fa-github"></i></div>
+                <h3>GitHub Pages/Actions</h3>
+                <p>Hospedagem ágil estática, automação com <strong>Actions</strong> e blindagem de chaves e variáveis sensíveis de ambiente via <strong>Secrets</strong>.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-database"></i></div>
+                <h3>Supabase & Postgres</h3>
+                <p>Hospedagem das tabelas relacionais de faturamento, logs de auditoria técnica e barramento de segurança a nível de linha (RLS).</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-infinity"></i></div>
+                <h3>Make.com / WebRTC</h3>
+                <p>Orquestração lógica sem código para gatilhos de mensagens e infraestrutura <strong>Jitsi Meet</strong> para comunicações de vídeo em tempo real.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Arquitetura Tecnológica</span>
+        <span>Slide 8</span>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">🔒 Arquitetura de Dados (Database Schema)</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tabela no Supabase</th>
+                        <th>Finalidade Principal</th>
+                        <th>Campos Chave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>logs_atendimento</strong></td>
+                        <td>Auditoria e estatística de rede</td>
+                        <td>id, profissional_nome, especialidade, status_conexao</td>
+                    </tr>
+                    <tr>
+                        <td><strong>faturamento_sus</strong></td>
+                        <td>Integração administrativa e faturamento</td>
+                        <td>atendimento_id, codigo_procedimento, valor_estimado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>avaliacoes_funcionalidade</strong></td>
+                        <td>Dados Clínicos Especializados (IFBrM)</td>
+                        <td>atendimento_id, pontuacao_ifbrm, observacoes_barreiras</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Estrutura de Tabelas</span>
+        <span>Slide 9</span>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">🔒 Segurança da Informação e LGPD</h2>
+    <div class="content-area">
+        <div class="bullet-list">
+            <ul>
+                <li style="margin-bottom: 20px;"><i class="fa-solid fa-shield-halved"></i> <strong>Conformidade LGPD:</strong> Prontuários e dados de vulnerabilidade funcional salvos sob controle estrito de políticas de segurança.</li>
+                <li style="margin-bottom: 20px;"><i class="fa-solid fa-video-slash"></i> <strong>Privacidade Clínica absoluta:</strong> Nenhum fluxo de vídeo ou áudio é gravado em servidores, respeitando o sigilo profissional-paciente.</li>
+                <li style="margin-bottom: 20px;"><i class="fa-solid fa-cloud-arrow-up"></i> <strong>Hospedagem Estratégica:</strong> Bancos e instâncias configurados na região da América do Sul (São Paulo) visando conformidade e menor latência.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Segurança da Informação</span>
+        <span>Slide 10</span>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">📈 Impacto Territorial e Eficiência</h2>
+    <div class="content-area">
+        <div class="bar-container">
+            <div class="bar-item">
+                <div class="bar-label">Modelo Tradicional (Fila)</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 90%;">90 Dias de Espera Média</div></div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-label">TeleCRIDAC (Estimado)</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 15%; background: #11caa0;">15 Dias de Espera Média</div></div>
+            </div>
+        </div>
+        <p style="margin-top: 40px; font-style: italic; text-align: center; color: #64748b;">A plataforma atua como um hub centralizado na capital Cuiabá, irradiando conhecimento clínico especializado para os 141 municípios de Mato Grosso, minimizando custos de deslocamento.</p>
+    </div>
+    <div class="slide-footer">
+        <span>Métricas de Sucesso</span>
+        <span>Slide 11</span>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12">
+    <h2 class="slide-title">📅 Próximos Passos (Roadmap da Equipe)</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 1</h4>
+                <p style="font-size: 15px;">Integração Base (GitHub + Supabase)</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 2</h4>
+                <p style="font-size: 15px;">Protótipos de Tela e Formulário IFBrM</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 3</h4>
+                <p style="font-size: 15px;">Testes de Conexão e Validação</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 4</h4>
+                <p style="font-size: 15px;">Homologação Institucional SES-MT</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Cronograma de Execução</span>
+        <span>Slide 12</span>
+    </div>
+</div>
+
+<div class="slide-container" id="slide13">
+    <div class="title-layout">
+        <h2 style="font-size: 64px; margin-bottom: 20px;">Dúvidas ou Sugestões?</h2>
+        <p class="subtitle" style="font-style: italic;">"A tecnologia viabiliza, mas a dedicação da equipe transforma a saúde pública."</p>
+        <div style="margin-top: 60px; text-align: center;">
+            <p><strong>Equipe de Desenvolvimento TeleCRIDAC</strong></p>
+            <p style="font-size: 16px; color: #64748b; margin-top: 5px;">CRIDAC / Secretaria de Estado de Saúde de Mato Grosso</p>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encerramento</span>
+        <span>Slide 13</span>
+    </div>
+</div>
+
+</body>
+</html>
