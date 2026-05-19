@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleCRIDAC - Onboarding de Desenvolvimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* SETUP & CORE PRINCIPLES */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #f1f5f9; 
+            font-family: "DM Sans", sans-serif;
+            color: #334155;
+            padding: 40px 20px;
+        }
+        
+        .presentation-guide {
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-left: 5px solid #005088;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1280px;
+            min-height: 720px;
+            background-color: #ffffff;
+            position: relative; 
+            overflow: hidden;
+            display: flex; 
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 60px;
+            margin: 0 auto 50px auto;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Elementos de Design de Fundo */
+        .slide-container::before {
+            content: ''; 
+            position: absolute; 
+            top: -100px; 
+            right: -100px;
+            width: 400px; 
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 80, 136, 0.04) 0%, transparent 70%);
+            z-index: 0; 
+            border-radius: 50%;
+        }
+
+        /* TIPOGRAFIA */
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #005088; }
+        h1 { font-size: 56px; line-height: 1.1; margin-bottom: 20px; }
+        .slide-title { font-size: 38px; font-weight: 700; margin-bottom: 40px; text-align: left; width: 100%; position: relative; z-index: 10; border-bottom: 3px solid #11caa0; padding-bottom: 10px; }
+        p, li { font-size: 18px; line-height: 1.6; color: #475569; }
+        .accent { color: #11caa0; font-weight: 700; }
+
+        /* LAYOUTS */
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; position: relative; z-index: 1; }
+        
+        .title-layout { text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: auto; }
+        .title-layout img.logo { max-width: 280px; margin-bottom: 30px; border-radius: 8px; }
+        .subtitle { font-size: 24px; color: #64748b; max-width: 800px; margin-top: 15px; }
+
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 100%; align-items: center; }
+        .two-column.tiled > div { background-color: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; padding: 40px; }
+        
+        .image-placeholder { 
+            background-color: #f1f5f9; 
+            border: 2px dashed #cbd5e1; 
+            border-radius: 16px; 
+            height: 380px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            color: #94a3b8;
+            padding: 20px;
+            text-align: center;
+        }
+        .image-placeholder i { font-size: 48px; margin-bottom: 15px; color: #cbd5e1; }
+
+        .tiled-content { display: flex; gap: 25px; width: 100%; }
+        .tile { flex: 1; background: #f8fafc; padding: 30px; border-radius: 16px; border-top: 4px solid #005088; border-left: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+        .tile .icon { font-size: 36px; color: #11caa0; margin-bottom: 20px; }
+        .tile h3 { font-size: 22px; margin-bottom: 15px; }
+
+        .table-layout table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table-layout th { background: #005088; color: white; padding: 18px; text-align: left; font-family: "Merriweather", serif; font-size: 16px; }
+        .table-layout td { padding: 16px 18px; border-bottom: 1px solid #e2e8f0; font-size: 16px; }
+        .table-layout tr:nth-child(even) { background: #f8fafc; }
+
+        .highlight-number { font-size: 100px; font-weight: 700; color: #11caa0; line-height: 1; }
+
+        /* Timeline */
+        .timeline-layout { display: flex; justify-content: space-between; position: relative; margin-top: 40px; padding: 0 20px; }
+        .timeline-line { position: absolute; top: 45px; left: 0; width: 100%; height: 4px; background: #e2e8f0; z-index: 0; }
+        .timeline-item { width: 22%; position: relative; z-index: 1; text-align: center; }
+        .timeline-dot { width: 24px; height: 24px; background: #005088; border-radius: 50%; margin: 0 auto 20px auto; border: 4px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        /* Barra de Gráfico */
+        .bar-container { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+        .bar-item { display: flex; align-items: center; gap: 20px; }
+        .bar-label { width: 220px; font-weight: 500; text-align: right; font-size: 16px; }
+        .bar-track { flex-grow: 1; height: 40px; background: #f1f5f9; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, #005088, #11caa0); display: flex; align-items: center; padding-left: 20px; color: white; font-weight: 700; font-size: 14px; }
+
+        /* Lista customizada */
+        .bullet-list { list-style: none; }
+        .bullet-list li { position: relative; padding-left: 35px; margin-bottom: 15px; font-size: 18px; }
+        .bullet-list li i { position: absolute; left: 0; top: 4px; color: #11caa0; font-size: 20px; }
+
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-guide">
+    <p>💡 <strong>Dica de Uso:</strong> Esta página reúne todos os slides em formato linear de rolagem para facilitar a leitura e edição. Para alterar textos ou links de imagens, abra este arquivo (.html) em qualquer editor de código (como Bloco de Notas ou VS Code) e faça as modificações desejadas.</p>
+</div>
+
+<!-- SLIDE 1: CAPA -->
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <img src="logo-telecridac.png" alt="TeleCRIDAC Logo" class="logo" onerror="this.style.display='none';">
+        <h1>Bem-vindos à Missão <span class="accent">TeleCRIDAC</span></h1>
+        <p class="subtitle">Arquitetura, Valor e Inovação no Teleatendimento Multidisciplinar da SES-MT</p>
+    </div>
+    <div class="slide-footer">
+        <span>CRIDAC / SES-MT</span>
+        <span>Slide 1</span>
+    </div>
+</div>
+
+<!-- SLIDE 2: SEÇÃO 1 -->
+<div class="slide-container" id="slide2">
+    <div class="title-layout">
+        <h2 style="font-size: 52px;">01. A Visão do Projeto</h2>
+        <div style="width: 100px; height: 5px; background: #11caa0; margin-top: 20px;"></div>
+        <p class="subtitle" style="margin-top: 30px;">Transformando a "Tática do Aparentemente Simples" em uma solução robusta para o SUS.</p>
+    </div>
+    <div class="slide-footer">
+        <span>Integração de Equipe</span>
+        <span>Slide 2</span>
+    </div>
+</div>
+
+<!-- SLIDE 3: PROPÓSITO -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Propósito e Impacto</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3 style="margin-bottom: 15px;"><i class="fa-solid fa-users" style="color: #11caa0; margin-right: 10px;"></i> Para o Cidadão</h3>
+                <p>Eliminar barreiras geográficas em Mato Grosso. O TeleCRIDAC leva o especialista até o paciente, garantindo dignidade e acesso especializado via telessaúde humanizada.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 15px;"><i class="fa-solid fa-chart-line" style="color: #11caa0; margin-right: 10px;"></i> Para a Gestão SES-MT</h3>
+                <p>Interoperabilidade e dados em tempo real. Transformamos cada consulta em logs estruturados para faturamento SUS e métricas de eficiência clínica.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Valor do Projeto</span>
+        <span>Slide 3</span>
+    </div>
+</div>
+
+<!-- SLIDE 4: EXPERIÊNCIA DO PROFISSONAL (Com espaço para imagem corrigida) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">A Experiência do Profissional</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>O foco do desenvolvedor é simplificar a vida do fonoaudiólogo, fisioterapeuta e médico. Nossa interface deve permitir:</p>
+                <ul class="bullet-list" style="margin-top: 25px;">
+                    <li><i class="fa-solid fa-check-circle"></i> Registro ágil do <strong>IFBrM</strong> (Avaliação de Deficiência).</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Sincronização automática com o banco de dados.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Visualização do histórico do paciente em um clique.</li>
+                </ul>
+            </div>
+            <div>
+                <!-- Link que quebrou anteriormente. Você pode substituir o src abaixo pela URL real da sua imagem ou por um arquivo local (ex: profissional.jpg) -->
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80" alt="Profissional da saúde" style="width:100%; height:380px; object-fit:cover; border-radius:16px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="image-placeholder" style="display:none;">
+                    <i class="fa-solid fa-image"></i>
+                    <p><strong>Espaço da Imagem</strong><br>Substitua o link no código por uma imagem válida.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Foco no Usuário</span>
+        <span>Slide 4</span>
+    </div>
+</div>
+
+<!-- SLIDE 5: TECH STACK -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Nossa Tech Stack</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-brands fa-github"></i></div>
+                <h3>GitHub</h3>
+                <p>Versionamento, automação com <strong>Actions</strong> e segurança via <strong>Secrets</strong> para proteção de chaves de API.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-database"></i></div>
+                <h3>Supabase</h3>
+                <p>Nosso "Backend as a Service". PostgreSQL em tempo real, Autenticação e Armazenamento (Storage) resiliente.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-brands fa-python"></i></div>
+                <h3>Python / Web</h3>
+                <p>Linguagem base para processamento de dados e integração de scripts de automação de faturamento e rotinas internas.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Arquitetura Tecnológica</span>
+        <span>Slide 5</span>
+    </div>
+</div>
+
+<!-- SLIDE 6: SCHEMA BANCO -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Arquitetura de Dados (Database Schema)</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tabela no Supabase</th>
+                        <th>Finalidade Principal</th>
+                        <th>Campos Chave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>logs_atendimento</strong></td>
+                        <td>Auditoria e estatística de rede</td>
+                        <td>id, profissional_nome, especialidade, status_conexao</td>
+                    </tr>
+                    <tr>
+                        <td><strong>faturamento_sus</strong></td>
+                        <td>Integração administrativa e faturamento</td>
+                        <td>atendimento_id, codigo_procedimento, valor_estimado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>avaliacoes_funcionalidade</strong></td>
+                        <td>Dados Clínicos Especializados (IFBrM)</td>
+                        <td>atendimento_id, pontuacao_ifbrm, observacoes_barreiras</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Estrutura de Tabelas</span>
+        <span>Slide 6</span>
+    </div>
+</div>
+
+<!-- SLIDE 7: GRÁFICO METAS -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Meta de Eficiência Operacional</h2>
+    <div class="content-area">
+        <div class="bar-container">
+            <div class="bar-item">
+                <div class="bar-label">Modelo Tradicional (Fila)</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 90%;">90 Dias de Espera Média</div></div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-label">TeleCRIDAC (Estimado)</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 15%; background: #11caa0;">15 Dias de Espera Média</div></div>
+            </div>
+        </div>
+        <p style="margin-top: 40px; font-style: italic; text-align: center; color: #64748b;">Objetivo: Otimizar o tempo médio para primeira avaliação multidisciplinar em até 83%.</p>
+    </div>
+    <div class="slide-footer">
+        <span>Métricas de Sucesso</span>
+        <span>Slide 7</span>
+    </div>
+</div>
+
+<!-- SLIDE 8: FOCO NO PACIENTE -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Foco Humano e Social</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>A tecnologia é o meio, a humanização é o fim. Cada linha de código que escrevemos visa tornar o atendimento digital tão acolhedor quanto o presencial.</p>
+                <p style="margin-top: 20px;">Reduzimos drasticamente a necessidade de deslocamento de pacientes do interior de Mato Grosso para a capital, preservando a saúde física e mental da pessoa com deficiência.</p>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Atendimento humanizado" style="width:100%; height:380px; object-fit:cover; border-radius:16px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="image-placeholder" style="display:none;">
+                    <i class="fa-solid fa-image"></i>
+                    <p><strong>Espaço da Imagem</strong><br>Substitua o link no código por uma imagem válida.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Humanização no SUS</span>
+        <span>Slide 8</span>
+    </div>
+</div>
+
+<!-- SLIDE 9: ESCALABILIDADE -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Impacto Território</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="text-align: center;">
+                <div class="highlight-number">141</div>
+                <p class="accent" style="font-size: 24px; font-family: 'Merriweather', serif;">Municípios Potenciais</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 15px;">Escalabilidade Total</h3>
+                <p>O TeleCRIDAC foi desenhado para não se limitar à Cuiabá. Ele atua como um hub central, irradiando conhecimento clínico especializado e descentralizando o cuidado para todo o estado de Mato Grosso.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Alcance Estadual</span>
+        <span>Slide 9</span>
+    </div>
+</div>
+
+<!-- SLIDE 10: GOVERNANÇA -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Segurança e Governança</h2>
+    <div class="content-area">
+        <div class="bullet-list">
+            <ul>
+                <li style="margin-bottom: 20px;"><i class="fa-solid fa-shield-halved"></i> <strong>Conformidade LGPD:</strong> Dados sensíveis e prontuários estruturados de forma segura, com controle rígido de acesso.</li>
+                <li style="margin-bottom: 20px;"><i class="fa-solid fa-key"></i> <strong>Gestão de Credenciais:</strong> Chaves de API e senhas de produção totalmente protegidas nas variáveis do ambiente (GitHub Secrets).</li>
+                <li style="margin-bottom: 20px;"><i class="fa-solid fa-cloud-arrow-up"></i> <strong>Infraestrutura Nacional:</strong> Hospedagem configurada na região da América do Sul (São Paulo) para garantir menor latência operacional.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Segurança da Informação</span>
+        <span>Slide 10</span>
+    </div>
+</div>
+
+<!-- SLIDE 11: ROADMAP -->
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Próximos Passos (Roadmap da Equipe)</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 1</h4>
+                <p style="font-size: 15px;">Integração Base (GitHub + Supabase)</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 2</h4>
+                <p style="font-size: 15px;">Protótipos de Tela e Formulário IFBrM</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 3</h4>
+                <p style="font-size: 15px;">Testes de Conexão e Validação</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 style="color: #005088; margin-bottom: 10px;">Fase 4</h4>
+                <p style="font-size: 15px;">Homologação Institucional SES-MT</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Cronograma de Execução</span>
+        <span>Slide 11</span>
+    </div>
+</div>
+
+<!-- SLIDE 12: ENCERRAMENTO -->
+<div class="slide-container" id="slide12">
+    <div class="title-layout">
+        <h2 style="font-size: 64px; margin-bottom: 20px;">Dúvidas ou Sugestões?</h2>
+        <p class="subtitle" style="font-style: italic;">"A tecnologia viabiliza, mas a dedicação da equipe transforma a saúde pública."</p>
+        <div style="margin-top: 60px; text-align: center;">
+            <p><strong>Equipe de Desenvolvimento TeleCRIDAC</strong></p>
+            <p style="font-size: 16px; color: #64748b; margin-top: 5px;">CRIDAC / Secretaria de Estado de Saúde de Mato Grosso</p>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encerramento</span>
+        <span>Slide 12</span>
+    </div>
+</div>
+
+</body>
+</html>
