@@ -2,9 +2,8 @@ name: Manter Supabase Ativo
 
 on:
   schedule:
-    # Roda automaticamente a cada 3 dias às 06:00 AM UTC
     - cron: '0 6 */3 * *'
-  workflow_dispatch: # Permite que você ative manualmente pelo painel do GitHub se quiser testar
+  workflow_dispatch:
 
 jobs:
   ping_supabase:
