@@ -1,0 +1,17 @@
+name: Manter Supabase Ativo
+
+on:
+  schedule:
+    # Roda automaticamente a cada 3 dias às 06:00 AM UTC
+    - cron: '0 6 */3 * *'
+  workflow_dispatch: # Permite que você ative manualmente pelo painel do GitHub se quiser testar
+
+jobs:
+  ping_supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fazer requisição ao banco para evitar pausa
+        run: |
+          curl -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/registros_atendimento?select=count" \
+          -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_KEY }}"
